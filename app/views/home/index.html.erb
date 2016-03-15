@@ -1,0 +1,26 @@
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    ShopifyApp.ready(function(){
+      ShopifyApp.Bar.initialize({
+        title: "Home",
+        icon: "<%= asset_path('favicon.ico') %>"
+      });
+    });
+  </script>
+<% end %>
+
+<h2>Products</h2>
+<div> 
+<%=link_to "Logout",logout_path,class:'mdl-button mdl-js-button mdl-button--raised mdl-button--accent'%>
+</div>
+<ul>
+  <% @products.each do |product| %>
+      <li class="collection-item">
+         
+        <%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %>
+  </li> 
+  <% end %>
+<ul>
+
+
+ 
